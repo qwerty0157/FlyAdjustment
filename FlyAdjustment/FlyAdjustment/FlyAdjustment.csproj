@@ -48,9 +48,14 @@
     <Compile Include="Calibration.cs" />
     <Compile Include="PolynomialInDelta.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="CalibrationFunc\PolynomialInDelta.cs" />
+    <Compile Include="CalibrationFunc\SABR.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CalibrationFunc\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

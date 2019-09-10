@@ -1,5 +1,6 @@
 ﻿using System;
 using MathNet.Numerics.Distributions;
+using MathNet.Numerics.LinearAlgebra;
 namespace FlyAdjustment
 {
     public class PolynomialInDelta
