@@ -40,21 +40,27 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CalcForward.cs" />
-    <Compile Include="CalcD.cs" />
-    <Compile Include="CalcDelta.cs" />
-    <Compile Include="CalcPrice.cs" />
-    <Compile Include="CalcStrike.cs" />
+    <Compile Include="ForwardCalculator.cs" />
+    <Compile Include="DFuncCalculator.cs" />
+    <Compile Include="DeltaCalculator.cs" />
+    <Compile Include="PriceCalculator.cs" />
+    <Compile Include="StrikeCalculator.cs" />
     <Compile Include="Calibration.cs" />
-    <Compile Include="Parameter.cs" />
     <Compile Include="CalibrationFunc\PolynomialInDelta.cs" />
     <Compile Include="CalibrationFunc\SABR.cs" />
+    <Compile Include="InitialTerm\InitialParameter.cs" />
+    <Compile Include="InitialTerm\InitialSetting.cs" />
+    <Compile Include="JudgeMaterial\JudgeOfCallPut.cs" />
+    <Compile Include="JudgeMaterial\JudgeOfVolatility.cs" />
+    <Compile Include="UseBisection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CalibrationFunc\" />
+    <Folder Include="InitialTerm\" />
+    <Folder Include="JudgeMaterial\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

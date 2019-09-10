@@ -7,34 +7,46 @@ namespace FlyAdjustment
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            CalcEURUSD();
+            CalcUSDJPY();
         }
 
-        static void CalcEURUSD()
+        static void CalcUSDJPY()
         {
-            var rateOfForeign = 0.03446;
-            var rateOfDomestic = 0.0294;
-            var spotRate = 1.3465;
+            var spot = 106.925;
+            var rateOfDomestic = -0.00085034363976;
+            var rateOfForeign = 0.02216698493974;
             var tau = 1.0;
-            var volAtm = 0.1825;
-            var vol25MS = 0.0095;
-            var vol25RR = -0.006;
-            var forward = CalcForward.CalcForwardRate(
-                spotRate,
-                tau,
-                rateOfForeign,
-                rateOfDomestic);
-            var parameter = new Parameter(
-                rateOfForeign,
+            var volAtm = 0.071;
+            var vol25MS = 0.002;
+            var vol10MS = 0.0105;
+            var vol25RR = -0.021;
+            var vol10RR = -0.042;
+            var deltaType = InitialTerm.DeltaType.PercentageSpotDelta;
+
+            var param = new InitialTerm.InitialParameter(
+                spot,
                 rateOfDomestic,
-                spotRate,
+                rateOfForeign,
                 tau,
                 volAtm,
                 vol25MS,
-                vol25RR);
-            var delta = 0.25;
+                vol10MS,
+                vol25RR,
+                vol10RR,
+                deltaType
+            );
+            var forward = ForwardCalculator.CalcForwardRate(param);
+            var strikeList = InitialSetting.StrikeSetting(param);
+            var interpolationName = "SABR";
 
-            Calibration.FlyAdjustmentByPolynomial(delta, parameter);
+            var vTarget = 4.5;
+
+            var Ans = Calibration.Solve(
+                interpolationName,
+                param,
+                forward,
+                vTarget,
+                strikeList);
         }
     }
 }
