@@ -46,7 +46,6 @@
     <Compile Include="CalcPrice.cs" />
     <Compile Include="CalcStrike.cs" />
     <Compile Include="Calibration.cs" />
-    <Compile Include="PolynomialInDelta.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="CalibrationFunc\PolynomialInDelta.cs" />
     <Compile Include="CalibrationFunc\SABR.cs" />
