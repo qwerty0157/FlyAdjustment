@@ -9,11 +9,11 @@ namespace FlyAdjustment
     public class StrikrCalcultor
     {
         private static double Number;
-        public InitialTerm.InitialParameter param;
-        private static double forward;
-        private static double volatility;
-        private static InitialTerm.CallPutType type;
-        private static InitialTerm.DeltaType deltaType;
+        public InitialTerm.InitialParameter Param;
+        private static double Forward;
+        private static double Volatility;
+        private static InitialTerm.CallPutType Type;
+        private static InitialTerm.DeltaType DeltaType;
         private static Func<double, double> InvCDF = d => Normal.InvCDF(0, 1, d);
 
         static public double CalcStrike(
@@ -29,16 +29,16 @@ namespace FlyAdjustment
                     return CalcAtmStrike(param, forward, volatility, deltaType);
                 case InitialTerm.VolatilityType.MS25Call:
                     return CalcInvCdf(
-                        param, volatility, forward, 0.25, type, deltaType);
+                        param, volatility, forward, 0.25, Type, deltaType);
                 case InitialTerm.VolatilityType.MS25Put:
                     return CalcInvCdf(
-                        param, volatility, forward, -0.25, type, deltaType);
+                        param, volatility, forward, -0.25, Type, deltaType);
                 case InitialTerm.VolatilityType.MS10Call:
                     return CalcInvCdf(
-                        param, volatility, forward, 0.1, type, deltaType);
+                        param, volatility, forward, 0.1, Type, deltaType);
                 case InitialTerm.VolatilityType.MS10Put:
                     return CalcInvCdf(
-                        param, volatility, forward, -0.1, type, deltaType);
+                        param, volatility, forward, -0.1, Type, deltaType);
                 default:
                     return 0;
             }
@@ -71,28 +71,27 @@ namespace FlyAdjustment
             InitialTerm.CallPutType type,
             InitialTerm.DeltaType deltaType)
         {
-            param = param;
-            volatility = volatility;
-            forward = forward;
-            deltaType = deltaType;
+            Volatility = volatility;
+            Forward = forward;
+            DeltaType = deltaType;
             Number = delta;
 
+            var strikeCalculator = new StrikrCalcultor();
             return UseBisection.Calc(
-                DeltaFunctionOfStrike,
+                strikeCalculator.DeltaFunctionOfStrike,
                 0.5 * param.spotRate,
                 2.0 * param.spotRate);
         }
 
-        private static double DeltaFunctionOfStrike(double strike)
+        private double DeltaFunctionOfStrike(double strike)
         {
-            
             return DeltaCalculator.CalcDeltaValue(
-                param,
-                forward,
+                Param,
+                Forward,
                 strike,
-                volatility,
-                type,
-                deltaType) - (int)type * Number;
+                Volatility,
+                Type,
+                DeltaType) - (int)Type * Number;
         }
     }
 }
