@@ -16,6 +16,11 @@ namespace FlyAdjustment
         private static InitialTerm.DeltaType DeltaType;
         private static Func<double, double> InvCDF = d => Normal.InvCDF(0, 1, d);
 
+        public StrikrCalcultor(InitialTerm.InitialParameter param)
+        {
+            this.Param = param;
+        }
+
         static public double CalcStrike(
             InitialTerm.InitialParameter param,
             double forward,
@@ -76,7 +81,7 @@ namespace FlyAdjustment
             DeltaType = deltaType;
             Number = delta;
 
-            var strikeCalculator = new StrikrCalcultor();
+            var strikeCalculator = new StrikrCalcultor(param);
             return UseBisection.Calc(
                 strikeCalculator.DeltaFunctionOfStrike,
                 0.5 * param.spotRate,
