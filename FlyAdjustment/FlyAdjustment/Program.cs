@@ -37,8 +37,8 @@ namespace FlyAdjustment
             );
             var forward = ForwardCalculator.CalcForwardRate(param);
             var strikeList = InitialSetting.StrikeSetting(param);
-            var interpolationName = "PolynomialInDelta";
-            //var interpolationName = "SABR";
+            //var interpolationName = "PolynomialInDelta";
+            var interpolationName = "SABR";
 
             var vTarget = 4.5;
 

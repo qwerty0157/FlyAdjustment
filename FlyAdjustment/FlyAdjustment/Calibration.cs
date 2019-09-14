@@ -50,10 +50,11 @@ namespace FlyAdjustment
                         LowerVector,
                         UpperVector,
                         VolParameter);
+                    //VolParameter = FindMinimum.OfFunction(FuncOfVolCondtion, VolParameter);
                 }
                 else
                 {
-                    VolParameter = FindMinimum.OfFunction(FuncOfVolCondtion, VolParameter, 1.0E+0, 1000);
+                    VolParameter = FindMinimum.OfFunction(FuncOfVolCondtion, VolParameter);
                 }
                 CalcStrikeList(VolParameter);
                 var vTrial = CalcValueTrial(VolParameter);
