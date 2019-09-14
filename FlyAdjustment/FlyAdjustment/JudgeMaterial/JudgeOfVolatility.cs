@@ -6,17 +6,17 @@ namespace FlyAdjustment.JudgeMaterial
         public static double Volatility(InitialTerm.InitialParameter param, InitialTerm.VolatilityType volatilityType)
         {
             double volatility = 0.0;
-            if (volatility == InitialTerm.VolatilityType.ATM)
+            if (volatilityType == InitialTerm.VolatilityType.ATM)
             {
                 volatility = param.volATM;
             }
-            else if (volatility == InitialTerm.VolatilityType.MS25Call
-                   || volatility == InitialTerm.VolatilityType.MS25Put)
+            else if (volatilityType == InitialTerm.VolatilityType.MS25Call
+                     || volatilityType == InitialTerm.VolatilityType.MS25Put)
             {
                 volatility = param.volATM + param.volMS25;
             }
-            else if (volatility == InitialTerm.VolatilityType.MS10Call
-                   || volatility == InitialTerm.VolatilityType.MS10Put)
+            else if (volatilityType == InitialTerm.VolatilityType.MS10Call
+                     || volatilityType == InitialTerm.VolatilityType.MS10Put)
             {
                 volatility = param.volATM + param.volMS10;
             }

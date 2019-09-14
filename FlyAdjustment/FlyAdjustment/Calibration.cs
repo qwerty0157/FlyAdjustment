@@ -97,9 +97,9 @@ namespace FlyAdjustment
             switch(InterpolationName)
             {
                 case "PolynomialInDelta":
-                    return CalibrationFunc.PolynomialInDelta.CalcVol(forward, strike, param.tau, param);
+                    return CalibrationFunc.PolynomialInDelta.CalcVol(forward, strike, param.tau, vec);
                 case "SABR":
-                    return CalibrationFunc.SABR.CalcVol(forward, strike, param.tau, param);
+                    return CalibrationFunc.SABR.CalcVol(forward, strike, param.tau, vec);
                 default:
                     return 0;
             }

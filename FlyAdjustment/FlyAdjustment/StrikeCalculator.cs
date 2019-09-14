@@ -85,6 +85,7 @@ namespace FlyAdjustment
 
         private static double DeltaFunctionOfStrike(double strike)
         {
+            
             return DeltaCalculator.CalcDeltaValue(
                 param,
                 forward,
