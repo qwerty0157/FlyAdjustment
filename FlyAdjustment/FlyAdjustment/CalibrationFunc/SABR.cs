@@ -43,7 +43,7 @@ namespace FlyAdjustment.CalibrationFunc
                       * Math.Log(forward / strike);
             var chi = Math.Log(
                 (Math.Sqrt(1 - 2.0 * rho * zFunc + Math.Pow(zFunc, 2.0))
-                + zFunc - rho) / (1-rho));
+                + zFunc - rho) / (1 - rho));
             return chi;
         }
 
@@ -56,11 +56,11 @@ namespace FlyAdjustment.CalibrationFunc
             double rho,
             double beta)
         {
-            return 1 + (Math.Pow((1 - beta), 2.0) / 24 * Math.Pow(alpha, 2.0)
+            return 1 + (Math.Pow((1 - beta), 2.0)) / 24 * Math.Pow(alpha, 2.0)
                          / Math.Pow(forward * strike, 1 - beta)
                 + 1 / 4 * rho * beta * nu * alpha
                 / Math.Pow((forward * strike), (1 - beta) / 2
-                          + ((2 - 3 * Math.Pow(rho, 2.0)) / 24 * Math.Pow(nu, 2.0))) * tau;
+                           + ((2 - 3 * Math.Pow(rho, 2.0)) / 24 * Math.Pow(nu, 2.0))) * tau;
         }
-
+    }
 }

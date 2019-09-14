@@ -7,13 +7,14 @@ namespace FlyAdjustment.JudgeMaterial
         {
             var type = InitialTerm.CallPutType.put;
             if (volatilityType == InitialTerm.VolatilityType.MS10Put
-              || InitialTerm.VolatilityType.MS25Put)
+                || volatilityType == InitialTerm.VolatilityType.MS25Put)
             {
                 type = InitialTerm.CallPutType.put;
             }
             else
                 type = InitialTerm.CallPutType.call;
+
+            return type;
         }
-        return type;
     }
 }
