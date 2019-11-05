@@ -7,7 +7,7 @@ namespace FlyAdjustment
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            CalcUSDJPY();
+            CalcUSDJPY(); //USDJPY calibration
         }
 
         static void CalcUSDJPY()
